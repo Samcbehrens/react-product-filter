@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import {ALL_PRODUCTS_ID} from './constants';
 
+//TODO: write test for data transformers
+
 /** creates new array with all unique catagories from all the products. 
  * This is used to list all catagories in a drop down*/
 export const getAllCategories = (data) => _.uniqBy(data.flatMap(product =>  product.categories),  'categoryId');
