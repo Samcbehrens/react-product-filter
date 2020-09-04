@@ -8,10 +8,11 @@ import { ALL_PRODUCTS_ID } from './constants'
 
 /* top level app component in charge of data loading, and state management */
 const App = () => {
+  // mock fetching data async  
   const [data, loading] = useFetchData();
   const [categoryId, setCategoryId] = useState(ALL_PRODUCTS_ID)
 
-  //With more time, place in own data store like redux
+  //TODO: With more time, place transformed data in own data store like redux
   const allCategories  = getAllCategories(data);
   const productsByCategoryId = getProductsByCategoryId(data, allCategories)
 
