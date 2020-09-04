@@ -68,10 +68,4 @@ describe('product cards', () => {
          const productCards = wrapper.find(Product);
          expect(productCards.length).to.eql(3);
     });
-
-    it('should filter only associated products if category is given', () => {
-        const wrapper = shallow(<Products {...fixtures} categoryId={vegetableCategoryId} />);
-        const productCards = wrapper.find(Product);
-        expect(productCards.length).to.eql(1);
-    });
 });
