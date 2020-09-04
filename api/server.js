@@ -8,4 +8,5 @@ app.get('/products', (req, res) => {
   return res.json(products);
 });
 
+// eslint-disable-next-line
 app.listen(port, () => console.info(`App started, listening on ${port}`));

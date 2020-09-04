@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Products from './Products';
-import products from './products.json';
 import Filters from './Filters';
+import useFetchData from './fetch-data-hook';
+import {getAllCategories, getProductsByCategoryId} from './data-utils';
+import { ALL_PRODUCTS_ID } from './constants'
 
-const App = () => (
-  <div className="app">
+/* top level app component in charge of data loading, and state management */
+const App = () => {
+  const [data, loading] = useFetchData();
+  const [categoryId, setCategoryId] = useState(ALL_PRODUCTS_ID)
+
+  //With more time, place in own data store like redux
+  const allCategories  = getAllCategories(data);
+  const productsByCategoryId = getProductsByCategoryId(data, allCategories)
+
+  const onChangeCategory = (val) => {
+    setCategoryId(val)
+  };
+
+  return (<div className="app">
     <div className="App-row">
-      <Filters />
+      <Filters categories={allCategories} onChangeCategory={onChangeCategory} />
     </div>
     <div className="App-row">
-      <Products products={products} />
+      {loading ? <div>...loading</div> : <Products products={productsByCategoryId[categoryId]} />}
     </div>
   </div>
-);
+)};
 
 export default App;

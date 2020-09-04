@@ -1,81 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Example Product Card View
 
-## Running
+# Overview 
+The chosen assignment was Option #2 Category Shelves.
 
-We added a separate express API to serve products to the client app.  To run that prior to kicking
-off the webpack dev server running the react app:
+# Testing 
+Each file should have a corresponding a test file with the exeption of the hooks file because I ran out of time. I used sinon, chia, and enzyme to test. I am less familiar with the react testing library so for speed's sake I chose to do with what is familiar even though the react testing library is becoming the general recommended framework. 
 
-```sh
-# Run on a later version of node
-# Runs on PORT 9001 by default, but can set the PORT env variable to run on a different port
-$ node api/server.js
-```
+# Scripts 
+ * start: starts the app at `http://localhost:3000/`
+ * lint: lint the project based on recommended eslint rules 
+ * build: builds the project 
+ * test: runs all the test files in the project 
 
-Then, move on to running the client below...
+# Data loading
+I use react hooks to "fetch" the data and also use it to mange app state. By "fetch" I mean I try to create an async behavior using a timeout to mimic a GET call. I then maninipulate the data and store it in react state.
 
-## Available Scripts
+If there was more time, I would have added a data store layer rather then relying on hooks. A lot of the data manipulation that is needed in this example can done once and then saved in the local storage to be reused. For example, you can abstract all product categories into a map whose key is `categoryId` and values are the products belonging to that category, that way looking by category is trivial and that mapping only needs to be done once on initial page load and when new data is fetched. 
 
-In the project directory, you can run:
+# Taking it further 
 
-### `npm start`
+### Features
+I would use the tags and parent child relationships in the data to display more filtering options. 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+For example maybe I would create a tree like structure in which you can move down categories. You can start with produce which is the parent category and then move into vegetable or fruit. 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+The tags are also helpful to show organic options or dietary restrictions which would be good to filter on. 
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Design
+I would have also broken down the component so the main level app no longer does state manegment and that would belong in a ProductView component. This improvement would be in addition to the data loading and store improvements.

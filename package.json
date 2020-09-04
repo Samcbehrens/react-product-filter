@@ -3,16 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "enzyme-adapter-react-16": "^1.15.4",
     "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react-test-renderer": "^16.13.1",
+    "sinon-chai": "^3.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "lint": "eslint .",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -22,5 +27,11 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "enzyme": "^3.11.0",
+    "eslint": "5.12.0",
+    "sinon": "^9.0.3"
+  }
 }
